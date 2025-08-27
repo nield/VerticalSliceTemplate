@@ -1,6 +1,4 @@
-﻿using VerticalSliceTemplate.Api.Common.Validation;
-
-namespace VerticalSliceTemplate.Api.Common.Extensions;
+﻿namespace VerticalSliceTemplate.Api.Common.Extensions;
 
 public static class RouteBuilderExtensions
 {
@@ -17,21 +15,21 @@ public static class RouteBuilderExtensions
                 .MapGet(pattern, handler);
 
     public static IEndpointConventionBuilder MapPostRoute(this IEndpointRouteBuilder webApplication,
-        string pattern, RequestDelegate handler, int majorVersion = 1) =>
+        string pattern, Delegate handler, int majorVersion = 1) =>
             webApplication
                 .UseMainRoute(majorVersion)
                 .MapPost(pattern, handler)
                 .AddEndpointFilterFactory(ValidationFilter.ValidationFilterFactory);
 
     public static IEndpointConventionBuilder MapPutRoute(this IEndpointRouteBuilder webApplication,
-        string pattern, RequestDelegate handler, int majorVersion = 1) =>
+        string pattern, Delegate handler, int majorVersion = 1) =>
             webApplication
                 .UseMainRoute(majorVersion)
                 .MapPut(pattern, handler)
                 .AddEndpointFilterFactory(ValidationFilter.ValidationFilterFactory);
 
     public static IEndpointConventionBuilder MapDeleteRoute(this IEndpointRouteBuilder webApplication,
-        string pattern, RequestDelegate handler, int majorVersion = 1) =>
+        string pattern, Delegate handler, int majorVersion = 1) =>
             webApplication
                 .UseMainRoute(majorVersion)
                 .MapDelete(pattern, handler)

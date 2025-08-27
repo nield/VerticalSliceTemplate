@@ -3,9 +3,9 @@ using System.Reflection;
 
 namespace VerticalSliceTemplate.Api.Configurations;
 
-public static class FluentValidator
+internal static class FluentValidator
 {
-    public static void ConfigureFluentValidator(this IServiceCollection services)
+    internal static void ConfigureFluentValidator(this IServiceCollection services)
     {
         services.AddValidatorsFromAssemblies(
         [

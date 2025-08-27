@@ -1,8 +1,8 @@
 ﻿namespace VerticalSliceTemplate.Api.Configurations;
 
-public static class ApiEndpoints
+internal static class ApiEndpoints
 {
-    public static void AddApiEndpoints(this IEndpointRouteBuilder app)
+    internal static void AddApiEndpoints(this IEndpointRouteBuilder app)
     {
         var endpointTypes = typeof(IEndpoint).Assembly
             .GetTypes()

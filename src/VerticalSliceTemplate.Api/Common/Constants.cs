@@ -7,6 +7,7 @@ public static class Constants
         public static class Tags
         {
             public const string Weather = "Weather";
+            public const string Todos = "ToDos";
         }
     }
 
@@ -16,4 +17,9 @@ public static class Constants
         public const string UserProfileId = "UserProfileId";
         public const string Authorization = "Authorization";
     } 
+
+    public static class Environments
+    {
+        public const string Test = "Test";
+    }
 }

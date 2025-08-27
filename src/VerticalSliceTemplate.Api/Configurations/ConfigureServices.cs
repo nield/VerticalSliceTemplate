@@ -2,9 +2,9 @@
 using VerticalSliceTemplate.Api.Common.Services;
 namespace VerticalSliceTemplate.Api.Configurations;
 
-public static class ConfigureServices
+internal static class ConfigureServices
 {
-    public static IHostApplicationBuilder AddApiServices(this IHostApplicationBuilder builder)
+    internal static IHostApplicationBuilder AddApiServices(this IHostApplicationBuilder builder)
     {
         var config = builder.Configuration;
 
@@ -32,6 +32,8 @@ public static class ConfigureServices
         builder.Services.ConfigureCompression();
 
         builder.Services.ConfigureHeaderPropagation();
+
+        builder.SetupDatabase();
 
         builder.Services.AddProblemDetails(options => 
             options.CustomizeProblemDetails = (context) =>

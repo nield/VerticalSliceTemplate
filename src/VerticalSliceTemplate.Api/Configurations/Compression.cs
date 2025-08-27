@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.ResponseCompression;
 
 namespace VerticalSliceTemplate.Api.Configurations;
 
-public static class Compression
+internal static class Compression
 {
-    public static void ConfigureCompression(this IServiceCollection services)
+    internal static void ConfigureCompression(this IServiceCollection services)
     {
         services.AddResponseCompression(options =>
         {
@@ -21,7 +21,7 @@ public static class Compression
             => options.Level = CompressionLevel.SmallestSize);
     }
 
-    public static void UseCompression(this WebApplication app)
+    internal static void UseCompression(this WebApplication app)
     {
         app.UseResponseCompression();
     }

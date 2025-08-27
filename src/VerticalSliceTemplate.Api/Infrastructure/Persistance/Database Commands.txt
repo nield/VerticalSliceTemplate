@@ -1,0 +1,5 @@
+﻿#Add new migration
+dotnet ef migrations add Initial --project ./src/VerticalSliceTemplate.Api/VerticalSliceTemplate.Api.csproj --output-dir Infrastructure/Persistance/Migrations
+
+#Update database
+dotnet ef database update --project ./src/VerticalSliceTemplate.Api/VerticalSliceTemplate.Api.csproj

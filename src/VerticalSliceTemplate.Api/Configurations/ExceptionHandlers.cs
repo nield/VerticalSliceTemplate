@@ -2,14 +2,14 @@
 
 namespace VerticalSliceTemplate.Api.Configurations;
 
-public static class ExceptionHandlers
+internal static class ExceptionHandlers
 {
     /// <summary>
     /// Register exception handlers. 
     /// Registration order matters in processing of handlers.
     /// </summary>
     /// <param name="services"></param>
-    public static void ConfigureExceptionHandlers(this IServiceCollection services)
+    internal static void ConfigureExceptionHandlers(this IServiceCollection services)
     {
         services.AddExceptionHandler<BadRequestExceptionHandler>();
         services.AddExceptionHandler<NotFoundExceptionHandler>();

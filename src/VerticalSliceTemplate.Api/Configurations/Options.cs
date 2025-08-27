@@ -2,9 +2,9 @@
 
 namespace VerticalSliceTemplate.Api.Configurations;
 
-public static class Options
+internal static class Options
 {
-    public static void ConfigureSettings(this IServiceCollection services, IConfiguration config)
+    internal static void ConfigureSettings(this IServiceCollection services, IConfiguration config)
     {
         services.Configure<AppSettings>(config);
     }

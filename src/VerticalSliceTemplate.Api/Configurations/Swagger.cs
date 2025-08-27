@@ -5,52 +5,26 @@ using VerticalSliceTemplate.Api.Swagger;
 
 namespace VerticalSliceTemplate.Api.Configurations;
 
-public static class Swagger
+internal static class Swagger
 {
-    public static void ConfigureSwagger(this IServiceCollection services, IConfiguration config)
+    internal static void ConfigureSwagger(this IServiceCollection services, IConfiguration config)
     {
         services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
+
         services.AddSwaggerGen(options => 
         {
-            //// Add OAuth2 authentication scheme
-            //options.AddSecurityDefinition("Keycloak", new OpenApiSecurityScheme
-            //{
-            //    Type = SecuritySchemeType.OAuth2,
-            //    Flows = new OpenApiOAuthFlows
-            //    {
-            //        Implicit = new OpenApiOAuthFlow
-            //        {
-            //            AuthorizationUrl = new Uri(config["AuthorityOptions:AuthorizationUrl"]!),
-            //            TokenUrl = new Uri(config["AuthorityOptions:TokenUrl"]!),                        
-            //            Scopes = new Dictionary<string, string>
-            //            {
-            //                { "minimal-api-aud", "Minimal Api" }
-            //            }
-            //        }
-            //    }
-            //});            
-
-            //// Add security requirement
-            //options.AddSecurityRequirement(new OpenApiSecurityRequirement
-            //{
-            //    {
-            //        new OpenApiSecurityScheme
-            //        {
-            //            Reference = new OpenApiReference
-            //            {
-            //                Type = ReferenceType.SecurityScheme,
-            //                Id = "Keycloak"
-            //            }
-            //        },
-            //        Array.Empty<string>()
-            //    }
-            //});
+            // Use full type name (with namespace) as schemaId
+            options.CustomSchemaIds(type =>
+            {
+                // Use full name, but replace '+' (nested class separator) with '_'
+                return type.FullName!.Replace("+", "_");
+            });
 
             options.OperationFilter<SwaggerDefaultValues>();
         });
     }
 
-    public static void UseApiDocumentation(this WebApplication app, IConfiguration config)
+    internal static void UseApiDocumentation(this WebApplication app, IConfiguration config)
     {
         app.UseSwagger();
         app.UseSwaggerUI(options =>

@@ -1,15 +1,17 @@
-﻿namespace VerticalSliceTemplate.Api.Configurations;
+﻿using VerticalSliceTemplate.Api.Infrastructure.Persistance;
 
-public static class Migrations
+namespace VerticalSliceTemplate.Api.Configurations;
+
+internal static class Migrations
 {
-    public static async Task ApplyMigrations(this WebApplication webApplication)
+    internal static async Task ApplyMigrations(this WebApplication webApplication)
     {
         using var scope = webApplication.Services.CreateScope();
 
-        //var dbContextInitialiser = scope.ServiceProvider.GetRequiredService<ApplicationDbContextInitialiser>();
+        var dbContextInitialiser = scope.ServiceProvider.GetRequiredService<ApplicationDbContextInitialiser>();
 
-        //await dbContextInitialiser.MigrateDatabaseAsync();
+        await dbContextInitialiser.MigrateDatabaseAsync();
 
-        //await dbContextInitialiser.SeedDataAsync();
+        await dbContextInitialiser.SeedDataAsync();
     }
 }

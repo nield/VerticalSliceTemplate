@@ -2,9 +2,9 @@
 
 namespace VerticalSliceTemplate.Api.Configurations;
 
-public static class ApiVersioning
+internal static class ApiVersioning
 {
-    public static void ConfigureVersioning(this IServiceCollection services)
+    internal static void ConfigureVersioning(this IServiceCollection services)
     {
         services.AddApiVersioning(options =>
         {

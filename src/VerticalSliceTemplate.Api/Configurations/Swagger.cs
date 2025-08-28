@@ -1,7 +1,4 @@
-﻿using Microsoft.Extensions.Options;
-using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.SwaggerGen;
-using VerticalSliceTemplate.Api.Swagger;
+﻿using VerticalSliceTemplate.Api.Swagger;
 
 namespace VerticalSliceTemplate.Api.Configurations;
 
@@ -9,19 +6,11 @@ internal static class Swagger
 {
     internal static void ConfigureSwagger(this IServiceCollection services, IConfiguration config)
     {
-        services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
+        services.AddEndpointsApiExplorer();
 
-        services.AddSwaggerGen(options => 
-        {
-            // Use full type name (with namespace) as schemaId
-            options.CustomSchemaIds(type =>
-            {
-                // Use full name, but replace '+' (nested class separator) with '_'
-                return type.FullName!.Replace("+", "_");
-            });
+        services.ConfigureOptions<ConfigureSwaggerOptions>();
 
-            options.OperationFilter<SwaggerDefaultValues>();
-        });
+        services.AddSwaggerGen();
     }
 
     internal static void UseApiDocumentation(this WebApplication app, IConfiguration config)
@@ -38,8 +27,6 @@ internal static class Swagger
                 var name = groupName.ToUpperInvariant();
                 options.SwaggerEndpoint(url, name);
             }
-
-            options.OAuthClientId(config["AuthorityOptions:Client"]);
         });
     }
 }

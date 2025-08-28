@@ -6,7 +6,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "http://localhost:5157"
+      "applicationUrl": "http://localhost:5157/swagger"
     },
     "https": {
       "commandName": "Project",
@@ -39,7 +39,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:61184/",
+      "applicationUrl": "http://localhost:61184/swagger",
       "sslPort": 44327
     }
   }

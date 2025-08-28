@@ -12,11 +12,6 @@ var database = builder.AddSqlServer("Sql", sqlPassword, 8003)
     .AddDatabase("SqlDatabase", "templateDb");
 
 builder.AddProject<Projects.VerticalSliceTemplate_Api>("verticalslicetemplate-api")
-    .WithUrlForEndpoint("https", url =>
-    {
-        url.DisplayText = "Swagger";
-        url.Url = "/swagger";
-    })
     .WithReference(database)
     .WaitFor(database)
     .WithReference(redis)

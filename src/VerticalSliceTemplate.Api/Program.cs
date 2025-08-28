@@ -20,19 +20,16 @@ app.UseExceptionHandler(_ => { });
 
 app.UseHeaderPropagation();
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsProduction())
-{
-    app.MapOpenApi();
-    app.UseApiDocumentation(app.Configuration);
-}
-
 app.UseHttpsRedirection();
 
 app.AddApiEndpoints();
 
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsProduction())
+{
+    app.UseApiDocumentation(app.Configuration);
+}
+
 await app.ApplyMigrations();
 
 await app.RunAsync();
-
-

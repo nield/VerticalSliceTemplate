@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
+using System.Collections.Concurrent;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
@@ -8,7 +9,7 @@ namespace VerticalSliceTemplate.Api.Common.Validation;
 [ExcludeFromCodeCoverage]
 public static class ValidationFilter
 {
-    private static readonly Dictionary<MethodInfo, ValidationDescriptor[]> _cache = [];
+    private static readonly ConcurrentDictionary<MethodInfo, ValidationDescriptor[]> _cache = [];
 
     public static EndpointFilterDelegate ValidationFilterFactory(
         EndpointFilterFactoryContext context,

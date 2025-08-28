@@ -1,22 +1,22 @@
-﻿namespace VerticalSliceTemplate.Api.Endpoints.V1.Todos;
+﻿namespace VerticalSliceTemplate.Api.Endpoints.V2.Todos;
 
 public class GetAll : IEndpoint
 {
     public void AddRoute(IEndpointRouteBuilder app)
     {
-        app.MapGetRoute("/todos", Handler)
+        app.MapGetRoute("/todos", Handler, 2)
             .WithTags(Constants.OpenApi.Tags.Todos)
-            .WithDescription("Get all todos");
+            .WithDescription("Used to get all todos");
     }
 
-    public record Response(long Id, string Title, List<string> Tags);
+    public record Response(long Id, string Title, List<string> Tags, string? CreatedBy);
 
     public static async Task<IEnumerable<Response>> Handler(
-        IApplicationDbContext applicationDbContext, 
+        IApplicationDbContext applicationDbContext,
         CancellationToken cancellationToken)
     {
         var data = await applicationDbContext.TodoItems
-            .Select(x => new Response(x.Id, x.Title, x.Tags))
+            .Select(x => new Response(x.Id, x.Title, x.Tags, x.CreatedBy))
             .ToListAsync(cancellationToken);
 
         return data;

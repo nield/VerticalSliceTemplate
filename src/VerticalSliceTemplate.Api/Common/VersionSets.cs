@@ -7,13 +7,13 @@ public static class VersionSets
 {
     private static readonly Dictionary<ApiVersion, ApiVersionSet> VersionSetStore = [];
 
-    public static ApiVersionSet GetVersionSet(int majorVersion = 1, int minorVersion = 0)
+    public static ApiVersionSet GetVersionSet(int majorVersion = 1)
     {
-        ApiVersion key = new(majorVersion, minorVersion);
+        ApiVersion key = new(majorVersion);
 
         if (!VersionSetStore.TryGetValue(key, out ApiVersionSet? value))
         {
-            value = CreateVersionSet(majorVersion, minorVersion);
+            value = CreateVersionSet(majorVersion);
 
             VersionSetStore[key] = value;
         }
@@ -21,11 +21,11 @@ public static class VersionSets
         return value!;
     }
 
-    private static ApiVersionSet CreateVersionSet(int majorVersion, int minorVersion)
+    private static ApiVersionSet CreateVersionSet(int majorVersion)
     {
         return new ApiVersionSetBuilder(null)
             .ReportApiVersions()
-            .HasApiVersion(new ApiVersion(majorVersion, minorVersion))
+            .HasApiVersion(new ApiVersion(majorVersion))
             .Build();
     }
 }

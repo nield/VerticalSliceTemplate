@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace VerticalSliceTemplate.Api.Endpoints.V1.Todos;
+﻿namespace VerticalSliceTemplate.Api.Endpoints.V1.Todos;
 
 public sealed class Update : IEndpoint
 {

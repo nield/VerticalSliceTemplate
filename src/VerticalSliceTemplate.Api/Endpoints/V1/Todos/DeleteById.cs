@@ -10,7 +10,7 @@ public sealed class DeleteById : IEndpoint
     }
 
     public static async Task<NoContent> Handler(
-        long id, 
+        [Required]long id, 
         IToDoRepository toDoRepository,
         CancellationToken cancellationToken)
     {

@@ -1,8 +1,7 @@
-﻿using FluentValidation;
-using FluentValidation.Results;
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
+using ValidationResult = FluentValidation.Results.ValidationResult;
 
 namespace VerticalSliceTemplate.Api.Common.Validation;
 

@@ -28,7 +28,6 @@ public sealed class Create : IEndpoint
         public required long Id { get; set; }
     }
 
-
     public static async Task<CreatedAtRoute<Response>> Handler(
         [Validate]Request request, 
         IToDoRepository toDoRepository, 

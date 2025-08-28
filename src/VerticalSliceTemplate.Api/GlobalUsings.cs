@@ -9,3 +9,4 @@ global using FluentValidation;
 global using VerticalSliceTemplate.Api.Common;
 global using VerticalSliceTemplate.Api.Common.Validation;
 global using Microsoft.AspNetCore.Http.HttpResults;
+global using System.ComponentModel.DataAnnotations;

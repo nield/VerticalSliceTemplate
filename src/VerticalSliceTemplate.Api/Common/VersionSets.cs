@@ -1,11 +1,12 @@
 ﻿using Asp.Versioning;
 using Asp.Versioning.Builder;
+using System.Collections.Concurrent;
 
 namespace VerticalSliceTemplate.Api.Common;
 
 public static class VersionSets
 {
-    private static readonly Dictionary<ApiVersion, ApiVersionSet> VersionSetStore = [];
+    private static readonly ConcurrentDictionary<ApiVersion, ApiVersionSet> VersionSetStore = [];
 
     public static ApiVersionSet GetVersionSet(int majorVersion = 1)
     {

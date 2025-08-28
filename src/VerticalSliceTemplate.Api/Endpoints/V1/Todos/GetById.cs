@@ -2,7 +2,7 @@
 
 namespace VerticalSliceTemplate.Api.Endpoints.V1.Todos;
 
-public class GetById : IEndpoint
+public sealed class GetById : IEndpoint
 {
     public void AddRoute(IEndpointRouteBuilder app)
     {
@@ -12,7 +12,7 @@ public class GetById : IEndpoint
             .WithName("GetToDoById");
     }
 
-    public record Response(long Id, string Title, List<string> Tags);
+    public sealed record Response(long Id, string Title, List<string> Tags);
 
     public static async Task<Response> Handler(
         [Required]long id, 

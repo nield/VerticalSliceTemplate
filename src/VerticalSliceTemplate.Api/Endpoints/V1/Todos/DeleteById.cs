@@ -1,6 +1,6 @@
 ﻿namespace VerticalSliceTemplate.Api.Endpoints.V1.Todos;
 
-public class DeleteById : IEndpoint
+public sealed class DeleteById : IEndpoint
 {
     public void AddRoute(IEndpointRouteBuilder app)
     {

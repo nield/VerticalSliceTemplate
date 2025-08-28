@@ -1,6 +1,6 @@
 ﻿namespace VerticalSliceTemplate.Api.Endpoints.V2.Todos;
 
-public class GetAll : IEndpoint
+public sealed class GetAll : IEndpoint
 {
     public void AddRoute(IEndpointRouteBuilder app)
     {
@@ -9,7 +9,7 @@ public class GetAll : IEndpoint
             .WithDescription("Used to get all todos");
     }
 
-    public record Response(long Id, string Title, List<string> Tags, string? CreatedBy);
+    public sealed record Response(long Id, string Title, List<string> Tags, string? CreatedBy);
 
     public static async Task<IEnumerable<Response>> Handler(
         IApplicationDbContext applicationDbContext,

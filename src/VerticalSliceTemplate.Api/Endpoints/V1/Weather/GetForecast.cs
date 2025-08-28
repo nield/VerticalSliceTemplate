@@ -2,7 +2,7 @@
 
 namespace VerticalSliceTemplate.Api.Endpoints.V1.Weather;
 
-public class GetForecast : IEndpoint
+public sealed class GetForecast : IEndpoint
 {
     public void AddRoute(IEndpointRouteBuilder app)
     {
@@ -29,5 +29,5 @@ public class GetForecast : IEndpoint
         return forecast;        
     }
 
-    public record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary);
+    public sealed record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary);
 }

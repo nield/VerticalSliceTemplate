@@ -2,7 +2,7 @@
 
 namespace VerticalSliceTemplate.Api.Endpoints.V1.Todos;
 
-public class Update : IEndpoint
+public sealed class Update : IEndpoint
 {
     public void AddRoute(IEndpointRouteBuilder app)
     {
@@ -17,7 +17,7 @@ public class Update : IEndpoint
         public List<string> Tags { get; set; } = [];
     }
 
-    public class Validator : AbstractValidator<Request>
+    public sealed class Validator : AbstractValidator<Request>
     {
         public Validator()
         {

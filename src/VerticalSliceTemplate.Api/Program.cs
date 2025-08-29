@@ -24,10 +24,9 @@ app.UseHttpsRedirection();
 
 app.AddApiEndpoints();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsProduction())
 {
-    app.UseApiDocumentation(app.Configuration);
+    app.UseApiDocumentation();
 }
 
 await app.ApplyMigrations();

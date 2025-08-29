@@ -4,7 +4,7 @@ namespace VerticalSliceTemplate.Api.Configurations;
 
 internal static class Swagger
 {
-    internal static void ConfigureSwagger(this IServiceCollection services, IConfiguration config)
+    internal static void ConfigureSwagger(this IServiceCollection services)
     {
         services.AddEndpointsApiExplorer();
 
@@ -13,7 +13,7 @@ internal static class Swagger
         services.AddSwaggerGen();
     }
 
-    internal static void UseApiDocumentation(this WebApplication app, IConfiguration config)
+    internal static void UseApiDocumentation(this WebApplication app)
     {
         app.UseSwagger();
         app.UseSwaggerUI(options =>

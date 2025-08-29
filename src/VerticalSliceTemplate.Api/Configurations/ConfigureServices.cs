@@ -18,7 +18,7 @@ internal static class ConfigureServices
 
         builder.Services.ConfigureExceptionHandlers();
 
-        builder.Services.ConfigureSwagger(config);
+        builder.Services.ConfigureSwagger();
 
         builder.Services.ConfigureVersioning();
 

@@ -1,5 +1,4 @@
 ﻿using System.Security.Claims;
-using System.Text;
 using Microsoft.AspNetCore.Http;
 using VerticalSliceTemplate.Api.Common.Services;
 using Constants = VerticalSliceTemplate.Api.Common.Constants;

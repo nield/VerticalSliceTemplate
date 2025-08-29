@@ -2,10 +2,10 @@
 
 namespace VerticalSliceTemplate.Api.Tests;
 
-public class ArchTests
+public class ArchitectureTests
 {
     [Fact]
-    public void Features_ShouldNotHaveDependencyOn_Infrastructure()
+    public void Endpoints_ShouldNotHaveDependencyOn_Infrastructure()
     {
         var result = Types.InCurrentDomain()
             .That()
@@ -19,7 +19,7 @@ public class ArchTests
     }
 
     [Fact]
-    public void Features_ShouldBeSealed()
+    public void Endpoints_ShouldBeSealed()
     {
         var result = Types.InCurrentDomain()
             .That()

@@ -47,7 +47,7 @@ public class ConfigureSwaggerOptions : IConfigureOptions<SwaggerGenOptions>
         var text = new StringBuilder("An example Api application with OpenAPI, Swashbuckle, and API versioning.");
         var info = new OpenApiInfo()
         {
-            Title = "Example API",
+            Title = "VerticalSliceTemplate API",
             Version = description.ApiVersion.ToString()
         };
 

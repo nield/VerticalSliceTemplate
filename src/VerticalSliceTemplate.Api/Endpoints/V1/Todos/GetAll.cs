@@ -16,6 +16,7 @@ public sealed class GetAll : IEndpoint
         CancellationToken cancellationToken)
     {
         var data = await applicationDbContext.TodoItems
+            .AsNoTracking()
             .Select(x => new Response(x.Id, x.Title, x.Tags))
             .ToListAsync(cancellationToken);
 

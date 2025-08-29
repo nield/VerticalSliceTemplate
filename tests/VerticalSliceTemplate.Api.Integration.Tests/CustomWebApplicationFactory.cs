@@ -23,11 +23,11 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
 
         Environment.SetEnvironmentVariable(
             "OTEL_EXPORTER_OTLP_ENDPOINT",
-            "http://localhost");
+            "");
 
         Environment.SetEnvironmentVariable(
             "SEQ_SERVER_URL",
-            "http://localhost");
+            "http://dummy-url");
 
         Environment.SetEnvironmentVariable(
             "ConnectionStrings__SqlDatabase",

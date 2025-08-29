@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{18D69C14
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VerticalSliceTemplate.Api.Tests", "tests\VerticalSliceTemplate.Api.Tests\VerticalSliceTemplate.Api.Tests.csproj", "{99FAF7A3-F21F-4DAE-B3D6-655439E4915A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VerticalSliceTemplate.Api.Integration.Tests", "tests\VerticalSliceTemplate.Api.Integration.Tests\VerticalSliceTemplate.Api.Integration.Tests.csproj", "{C7933A14-C768-4FB4-93CF-3CC24F85F2F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{99FAF7A3-F21F-4DAE-B3D6-655439E4915A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99FAF7A3-F21F-4DAE-B3D6-655439E4915A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99FAF7A3-F21F-4DAE-B3D6-655439E4915A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7933A14-C768-4FB4-93CF-3CC24F85F2F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7933A14-C768-4FB4-93CF-3CC24F85F2F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7933A14-C768-4FB4-93CF-3CC24F85F2F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7933A14-C768-4FB4-93CF-3CC24F85F2F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,5 +50,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{8A62E762-876C-4706-9890-90261D8A8CFD} = {701DF8BD-233A-441A-AACD-DAFF4A23701C}
 		{99FAF7A3-F21F-4DAE-B3D6-655439E4915A} = {18D69C14-9C3F-4929-971D-F4E75D4E9F3D}
+		{C7933A14-C768-4FB4-93CF-3CC24F85F2F9} = {18D69C14-9C3F-4929-971D-F4E75D4E9F3D}
 	EndGlobalSection
 EndGlobal

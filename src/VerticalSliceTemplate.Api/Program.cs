@@ -32,3 +32,12 @@ if (!app.Environment.IsProduction())
 await app.ApplyMigrations();
 
 await app.RunAsync();
+
+// Make the implicit Program class public so test projects can access it
+public partial class Program
+{
+    protected Program()
+    {
+
+    }
+}

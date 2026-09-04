@@ -2,16 +2,14 @@
 
 public sealed class GetById : IEndpoint
 {
-    public void AddRoute(IEndpointRouteBuilder app)
+    public static void AddRoute(IEndpointRouteBuilder app)
     {
         app.MapGetRoute("/todos/{id}", Handler)
             .WithTags(Constants.OpenApi.Tags.Todos)
             .WithDescription("Get a single ToDo")
             .WithName("GetToDoById");
     }
-
-    public sealed record Response(long Id, string Title, List<string> Tags);
-
+    
     public static async Task<Response> Handler(
         [Required]long id, 
         IToDoRepository toDoRepository, 
@@ -26,4 +24,6 @@ public sealed class GetById : IEndpoint
 
         return new Response(todo.Id, todo.Title, todo.Tags);
     }
+
+    public sealed record Response(long Id, string Title, List<string> Tags);
 }

@@ -6,7 +6,7 @@ var seq = builder.AddSeq("Seq", 8002)
 var redis = builder.AddRedis("Redis", 8004)
     .WithLifetime(ContainerLifetime.Persistent);
 
-var sqlPassword = builder.AddParameter("sqlPassword");
+var sqlPassword = builder.AddParameter("sqlPassword", secret: true);
 var database = builder.AddSqlServer("Sql", sqlPassword, 8003)
     .WithLifetime(ContainerLifetime.Persistent)
     .AddDatabase("SqlDatabase", "templateDb");

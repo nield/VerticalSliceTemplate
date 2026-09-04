@@ -22,7 +22,7 @@ app.UseHeaderPropagation();
 
 app.UseHttpsRedirection();
 
-app.AddApiEndpoints();
+app.MapEndpoints();
 
 if (!app.Environment.IsProduction())
 {

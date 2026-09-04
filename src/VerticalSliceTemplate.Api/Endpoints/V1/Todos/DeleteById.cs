@@ -2,7 +2,7 @@
 
 public sealed class DeleteById : IEndpoint
 {
-    public void AddRoute(IEndpointRouteBuilder app)
+    public static void AddRoute(IEndpointRouteBuilder app)
     {
         app.MapDeleteRoute("/todos/{id}", Handler)
             .WithTags(Constants.OpenApi.Tags.Todos)

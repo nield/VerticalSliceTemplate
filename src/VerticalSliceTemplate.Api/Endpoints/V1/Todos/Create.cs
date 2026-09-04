@@ -2,11 +2,28 @@
 
 public sealed class Create : IEndpoint
 {
-    public void AddRoute(IEndpointRouteBuilder app)
+    public static void AddRoute(IEndpointRouteBuilder app)
     {
         app.MapPostRoute("/todos", Handler)
             .WithTags(Constants.OpenApi.Tags.Todos)
             .WithDescription("Create new todo");
+    }
+    
+    public static async Task<CreatedAtRoute<Response>> Handler(
+        [Validate]Request request, 
+        IToDoRepository toDoRepository, 
+        CancellationToken cancellationToken)
+    {
+        var newTodoItem = new ToDoItem
+        {
+            Title = request.Title,
+            Tags = request.Tags
+        };
+
+        await toDoRepository.AddAsync(newTodoItem, cancellationToken);
+
+        return TypedResults.CreatedAtRoute<Response>(
+            new Response { Id = newTodoItem.Id }, "GetToDoById", new { id = newTodoItem.Id });
     }
 
     public sealed class Request
@@ -26,22 +43,5 @@ public sealed class Create : IEndpoint
     public sealed class Response
     {
         public required long Id { get; set; }
-    }
-
-    public static async Task<CreatedAtRoute<Response>> Handler(
-        [Validate]Request request, 
-        IToDoRepository toDoRepository, 
-        CancellationToken cancellationToken)
-    {
-        var newTodoItem = new ToDoItem
-        {
-            Title = request.Title,
-            Tags = request.Tags
-        };
-
-        await toDoRepository.AddAsync(newTodoItem, cancellationToken);
-
-        return TypedResults.CreatedAtRoute<Response>(
-            new Response { Id = newTodoItem.Id }, "GetToDoById", new { id = newTodoItem.Id });
     }
 }

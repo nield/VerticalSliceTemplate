@@ -2,25 +2,11 @@
 
 public sealed class Update : IEndpoint
 {
-    public void AddRoute(IEndpointRouteBuilder app)
+    public static void AddRoute(IEndpointRouteBuilder app)
     {
         app.MapPutRoute("/todos/{id}", Handler)
             .WithTags(Constants.OpenApi.Tags.Todos)
             .WithDescription("Used to update a single todo");
-    }
-
-    public sealed class Request
-    {
-        public required string Title { get; set; }
-        public List<string> Tags { get; set; } = [];
-    }
-
-    public sealed class Validator : AbstractValidator<Request>
-    {
-        public Validator()
-        {
-            RuleFor(x => x.Title).NotEmpty();
-        }
     }
 
     public static async Task<NoContent> Handler(
@@ -42,5 +28,19 @@ public sealed class Update : IEndpoint
         await toDoRepository.UpdateAsync(todo, cancellationToken);
 
         return TypedResults.NoContent();
+    }
+    
+    public sealed class Request
+    {
+        public required string Title { get; set; }
+        public List<string> Tags { get; set; } = [];
+    }
+
+    public sealed class Validator : AbstractValidator<Request>
+    {
+        public Validator()
+        {
+            RuleFor(x => x.Title).NotEmpty();
+        }
     }
 }

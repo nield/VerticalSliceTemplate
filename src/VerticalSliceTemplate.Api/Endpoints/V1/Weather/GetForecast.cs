@@ -4,7 +4,7 @@ namespace VerticalSliceTemplate.Api.Endpoints.V1.Weather;
 
 public sealed class GetForecast : IEndpoint
 {
-    public void AddRoute(IEndpointRouteBuilder app)
+    public static void AddRoute(IEndpointRouteBuilder app)
     {
         app.MapGetRoute("/weather/forecast", Handler)
             .WithDescription("Get weather forecast")

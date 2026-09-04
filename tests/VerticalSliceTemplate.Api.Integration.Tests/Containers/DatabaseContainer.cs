@@ -14,14 +14,13 @@ internal sealed class DatabaseContainer : BaseContainer<DatabaseContainer>
 
     protected override IContainer BuildContainer()
     {
-        return new ContainerBuilder()
-           .WithImage("mcr.microsoft.com/mssql/server:2022-latest")
-           .WithPortBinding(DatabaseDefaultPort, true)
-           .WithEnvironment("ACCEPT_EULA", "Y")
-           .WithEnvironment("MSSQL_SA_PASSWORD", DatabasePassword)
-           .WithWaitStrategy(Wait.ForUnixContainer().UntilPortIsAvailable(DatabaseDefaultPort))
-           .WithReuse(true)
-           .Build();
+        return new ContainerBuilder("mcr.microsoft.com/mssql/server:2022-latest")
+            .WithPortBinding(DatabaseDefaultPort, true)
+            .WithEnvironment("ACCEPT_EULA", "Y")
+            .WithEnvironment("MSSQL_SA_PASSWORD", DatabasePassword)
+            .WithWaitStrategy(Wait.ForUnixContainer().UntilInternalTcpPortIsAvailable(DatabaseDefaultPort))
+            .WithReuse(true)
+            .Build();
     }
 
     public override string GetConnectionString() =>

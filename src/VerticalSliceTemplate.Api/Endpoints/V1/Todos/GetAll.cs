@@ -2,14 +2,12 @@
 
 public sealed class GetAll : IEndpoint
 {
-    public void AddRoute(IEndpointRouteBuilder app)
+    public static void AddRoute(IEndpointRouteBuilder app)
     {
         app.MapGetRoute("/todos", Handler)
             .WithTags(Constants.OpenApi.Tags.Todos)
             .WithDescription("Get all todos");
     }
-
-    public sealed record Response(long Id, string Title, List<string> Tags);
 
     public static async Task<IEnumerable<Response>> Handler(
         IApplicationDbContext applicationDbContext, 
@@ -22,4 +20,6 @@ public sealed class GetAll : IEndpoint
 
         return data;
     }
+    
+    public sealed record Response(long Id, string Title, List<string> Tags);
 }

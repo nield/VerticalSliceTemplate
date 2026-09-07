@@ -8,6 +8,6 @@ public class ToDoRepository : BaseRepository<ToDoItem>, IToDoRepository
 
     public async Task DeleteAll(CancellationToken cancellationToken = default)
     {
-        await _dbContext.Database.ExecuteSqlRawAsync("TRUNCATE TABLE dbo.ToDo", cancellationToken);
+        await _dbSet.ExecuteDeleteAsync(cancellationToken);
     }
 }

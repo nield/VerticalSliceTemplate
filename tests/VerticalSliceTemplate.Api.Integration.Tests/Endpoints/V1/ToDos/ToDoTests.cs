@@ -3,7 +3,7 @@ using System.Net.Http.Json;
 using FizzWare.NBuilder;
 using VerticalSliceTemplate.Api.Endpoints.V1.Todos;
 
-namespace VerticalSliceTemplate.Api.Integration.Tests.Features.V1.ToDos;
+namespace VerticalSliceTemplate.Api.Integration.Tests.Endpoints.V1.ToDos;
 
 [Collection("WebApplicationCollection")]
 public class ToDoTests

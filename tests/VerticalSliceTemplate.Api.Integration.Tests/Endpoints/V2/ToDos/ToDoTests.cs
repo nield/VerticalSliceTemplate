@@ -1,7 +1,7 @@
 ﻿using System.Net.Http.Json;
 using VerticalSliceTemplate.Api.Endpoints.V2.Todos;
 
-namespace VerticalSliceTemplate.Api.Integration.Tests.Features.V2.ToDos;
+namespace VerticalSliceTemplate.Api.Integration.Tests.Endpoints.V2.ToDos;
 
 [Collection("WebApplicationCollection")]
 public class ToDoTests

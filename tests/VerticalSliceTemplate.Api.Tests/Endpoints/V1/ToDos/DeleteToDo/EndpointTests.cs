@@ -1,4 +1,4 @@
-﻿using VerticalSliceTemplate.Api.Endpoints.V1.Todos;
+using VerticalSliceTemplate.Api.Endpoints.V1.Todos;
 
 namespace VerticalSliceTemplate.Api.Tests.Endpoints.V1.ToDos.DeleteToDo;
 
@@ -9,11 +9,11 @@ public class EndpointTests : BaseTestFixture
     {
         var id = 1L;
 
-        _toDoRepositoryMock.GetByIdAsync(id, Arg.Any<CancellationToken>())
+        ToDoRepositoryMock.GetByIdAsync(id, Arg.Any<CancellationToken>())
             .ReturnsNull();
 
         await Assert.ThrowsAsync<NotFoundException>(() => 
-            DeleteById.Handler(id, _toDoRepositoryMock, CancellationToken.None));
+            DeleteById.Handler(id, ToDoRepositoryMock, CancellationToken.None));
     }
 
     [Fact]
@@ -23,10 +23,10 @@ public class EndpointTests : BaseTestFixture
 
         var item = Builder<ToDoItem>.CreateNew().Build();
 
-        _toDoRepositoryMock.GetByIdAsync(id, Arg.Any<CancellationToken>())
+        ToDoRepositoryMock.GetByIdAsync(id, Arg.Any<CancellationToken>())
             .Returns(item);
 
-        var sut = await DeleteById.Handler(id, _toDoRepositoryMock, CancellationToken.None);
+        var sut = await DeleteById.Handler(id, ToDoRepositoryMock, CancellationToken.None);
 
         sut.Should().NotBeNull();
         sut.StatusCode.Should().Be(StatusCodes.Status204NoContent);

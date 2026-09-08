@@ -1,4 +1,4 @@
-﻿using VerticalSliceTemplate.Api.Endpoints.V1.Todos;
+using VerticalSliceTemplate.Api.Endpoints.V1.Todos;
 
 namespace VerticalSliceTemplate.Api.Tests.Endpoints.V1.ToDos.GetAllToDos;
 
@@ -10,10 +10,10 @@ public class EndpointTests : BaseTestFixture
         var items = Builder<ToDoItem>.CreateListOfSize(1)
             .Build().AsQueryable().BuildMockDbSet();
 
-        _applicationDbContextMock.TodoItems
+        ApplicationDbContextMock.TodoItems
             .Returns(items);
 
-        var sut = await GetAll.Handler(_applicationDbContextMock, CancellationToken.None);
+        var sut = await GetAll.Handler(ApplicationDbContextMock, CancellationToken.None);
 
         sut.Should().NotBeNullOrEmpty();
     }

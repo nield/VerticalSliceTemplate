@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Hosting;
 using Constants = VerticalSliceTemplate.Api.Common.Constants;
 
 namespace VerticalSliceTemplate.Api.Tests.Common.Extensions;

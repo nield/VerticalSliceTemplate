@@ -25,7 +25,7 @@ internal static class Database
 
             options.UseSqlServer(builder.Configuration.GetConnectionString("SqlDatabase"))
                 .EnableSensitiveDataLogging(builder.Environment.IsDevelopment());
-        }, ServiceLifetime.Scoped);
+        });
 
         builder.EnrichSqlServerDbContext<ApplicationDbContext>();
     }

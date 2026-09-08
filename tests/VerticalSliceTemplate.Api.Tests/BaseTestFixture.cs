@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Logging;
 using VerticalSliceTemplate.Api.Common.Interfaces;
 
@@ -6,22 +6,24 @@ namespace VerticalSliceTemplate.Api.Tests;
 
 public abstract class BaseTestFixture<T> : BaseTestFixture where T : class
 {
-    protected T Instance;
+    private readonly Lazy<T> _lazyInstance;
 
-    protected readonly ILogger<T> _logger = Substitute.For<ILogger<T>>();
+    protected readonly ILogger<T> Logger = Substitute.For<ILogger<T>>();
 
     protected BaseTestFixture()
     {
-        Instance = CreateInstance();
+        _lazyInstance = new Lazy<T>(CreateInstance);
     }
+
+    protected T Instance => _lazyInstance.Value;
 
     protected abstract T CreateInstance();
 }
 
 public abstract class BaseTestFixture
 {
-    protected readonly IApplicationDbContext _applicationDbContextMock = Substitute.For<IApplicationDbContext>();
-    protected readonly ICurrentUserService _currentUserServiceMock = Substitute.For<ICurrentUserService>();
-    protected readonly LinkGenerator _linkGeneratorMock = Substitute.For<LinkGenerator>();
-    protected readonly IToDoRepository _toDoRepositoryMock = Substitute.For<IToDoRepository>();
+    protected readonly IApplicationDbContext ApplicationDbContextMock = Substitute.For<IApplicationDbContext>();
+    protected readonly ICurrentUserService CurrentUserServiceMock = Substitute.For<ICurrentUserService>();
+    protected readonly LinkGenerator LinkGeneratorMock = Substitute.For<LinkGenerator>();
+    protected readonly IToDoRepository ToDoRepositoryMock = Substitute.For<IToDoRepository>();
 }

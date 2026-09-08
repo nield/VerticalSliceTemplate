@@ -8,7 +8,7 @@ internal static class Logging
     {
         builder.Logging.ClearProviders();
 
-        builder.Host.UseSerilog((context, services, configuration)
+        builder.Host.UseSerilog((context, _, configuration)
                                     => configuration.ReadFrom.Configuration(context.Configuration));
     }
 

@@ -1,4 +1,4 @@
-﻿using Types = NetArchTest.Rules.Types;
+using Types = NetArchTest.Rules.Types;
 
 namespace VerticalSliceTemplate.Api.Tests;
 

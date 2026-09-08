@@ -8,17 +8,17 @@ namespace VerticalSliceTemplate.Api.Common.Validation;
 [ExcludeFromCodeCoverage]
 public static class ValidationFilter
 {
-    private static readonly ConcurrentDictionary<MethodInfo, ValidationDescriptor[]> _cache = [];
+    private static readonly ConcurrentDictionary<MethodInfo, ValidationDescriptor[]> Cache = [];
 
     public static EndpointFilterDelegate ValidationFilterFactory(
         EndpointFilterFactoryContext context,
         EndpointFilterDelegate next)
     {
         // Try to load from cache
-        if (!_cache.TryGetValue(context.MethodInfo, out var descriptors))
+        if (!Cache.TryGetValue(context.MethodInfo, out var descriptors))
         {
             descriptors = GetValidators(context.MethodInfo, context.ApplicationServices).ToArray();
-            _cache[context.MethodInfo] = descriptors;
+            Cache[context.MethodInfo] = descriptors;
         }
 
         // If no validators → passthrough

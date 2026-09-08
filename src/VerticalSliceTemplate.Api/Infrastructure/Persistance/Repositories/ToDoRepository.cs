@@ -8,6 +8,6 @@ public class ToDoRepository : BaseRepository<ToDoItem>, IToDoRepository
 
     public async Task DeleteAll(CancellationToken cancellationToken = default)
     {
-        await _dbSet.ExecuteDeleteAsync(cancellationToken);
+        await DbSet.ExecuteDeleteAsync(cancellationToken);
     }
 }

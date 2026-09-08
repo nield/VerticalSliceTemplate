@@ -10,7 +10,7 @@ public sealed class GetById : IEndpoint
             .WithTags(ApiTags.Todos)
             .WithDescription("Get a single ToDo")
             .WithName("GetToDoById")
-            .Produces(StatusCodes.Status200OK, typeof(Response))
+            .Produces<Response>()
             .Produces(StatusCodes.Status404NotFound);
     }
     

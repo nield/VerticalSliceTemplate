@@ -6,8 +6,6 @@ public static class ExceptionExtensions
 {
     public static string GetFullErrorMessage(this Exception exception)
     {
-        if (exception == null) return string.Empty;
-
         var errorList = new List<string>();
 
         var currentException = exception;

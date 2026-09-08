@@ -1,4 +1,4 @@
-﻿using VerticalSliceTemplate.Api.Endpoints.V1.Todos;
+using VerticalSliceTemplate.Api.Endpoints.V1.Todos;
 
 namespace VerticalSliceTemplate.Api.Tests.Endpoints.V1.ToDos.UpdateToDo;
 
@@ -11,11 +11,11 @@ public class EndpointTests : BaseTestFixture
 
         var request = Builder<Update.Request>.CreateNew().Build();
 
-        _toDoRepositoryMock.GetByIdAsync(id, Arg.Any<CancellationToken>())
+        ToDoRepositoryMock.GetByIdAsync(id, Arg.Any<CancellationToken>())
             .ReturnsNull();
 
         await Assert.ThrowsAsync<NotFoundException>(() =>
-            Update.Handler(id, request, _toDoRepositoryMock, CancellationToken.None));
+            Update.Handler(id, request, ToDoRepositoryMock, CancellationToken.None));
     }
 
     [Fact]
@@ -27,10 +27,10 @@ public class EndpointTests : BaseTestFixture
 
         var item = Builder<ToDoItem>.CreateNew().Build();
 
-        _toDoRepositoryMock.GetByIdAsync(id, Arg.Any<CancellationToken>())
+        ToDoRepositoryMock.GetByIdAsync(id, Arg.Any<CancellationToken>())
             .Returns(item);
 
-        var sut = await Update.Handler(id, request, _toDoRepositoryMock, CancellationToken.None);
+        var sut = await Update.Handler(id, request, ToDoRepositoryMock, CancellationToken.None);
 
         sut.Should().NotBeNull();
         sut.StatusCode.Should().Be(StatusCodes.Status204NoContent);

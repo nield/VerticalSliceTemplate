@@ -13,12 +13,12 @@ public sealed class Create : IEndpoint
             {
                 var response = await handler.Handle(request, cancellationToken);
 
-                return TypedResults.CreatedAtRoute<Response>(
+                return TypedResults.CreatedAtRoute(
                     new Response { Id = response.Id }, "GetToDoById", new { id = response.Id });
             })
             .WithTags(ApiTags.Todos)
             .WithDescription("Create new todo")
-            .Produces(StatusCodes.Status201Created, typeof(Response))
+            .Produces<Response>(StatusCodes.Status201Created)
             .Produces(StatusCodes.Status400BadRequest);
     }
 

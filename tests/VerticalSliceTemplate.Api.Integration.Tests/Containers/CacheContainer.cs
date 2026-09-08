@@ -8,7 +8,7 @@ internal sealed class CacheContainer : BaseContainer<CacheContainer>
 {
     private const ushort CacheDefaultPort = 6379;
 
-    public string GetCacheConnectionString() => $"{_container!.Hostname}:{_container.GetMappedPublicPort(CacheDefaultPort)}";
+    public string GetCacheConnectionString() => $"{Container.Hostname}:{Container.GetMappedPublicPort(CacheDefaultPort)}";
 
     protected override IContainer BuildContainer()
     {
@@ -19,5 +19,5 @@ internal sealed class CacheContainer : BaseContainer<CacheContainer>
     }
 
     public override string GetConnectionString() =>
-        $"{_container!.Hostname}:{_container.GetMappedPublicPort(CacheDefaultPort)}";
+        $"{Container.Hostname}:{Container.GetMappedPublicPort(CacheDefaultPort)}";
 }

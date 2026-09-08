@@ -1,4 +1,4 @@
-﻿using FluentValidation.TestHelper;
+using FluentValidation.TestHelper;
 using VerticalSliceTemplate.Api.Endpoints.V1.Todos;
 
 namespace VerticalSliceTemplate.Api.Tests.Endpoints.V1.ToDos.UpdateToDo;

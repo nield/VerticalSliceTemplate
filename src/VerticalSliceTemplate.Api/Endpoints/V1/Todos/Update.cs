@@ -8,7 +8,9 @@ public sealed class Update : IEndpoint
     {
         app.MapPutRoute(ApiRoutes.Todos + "/{id}", Handler)
             .WithTags(ApiTags.Todos)
-            .WithDescription("Used to update a single todo");
+            .WithDescription("Used to update a single todo")
+            .Produces(StatusCodes.Status204NoContent)
+            .Produces(StatusCodes.Status404NotFound);
     }
 
     public static async Task<NoContent> Handler(

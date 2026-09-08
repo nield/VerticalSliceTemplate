@@ -8,7 +8,9 @@ public sealed class Create : IEndpoint
     {
         app.MapPostRoute(ApiRoutes.Todos, Handler)
             .WithTags(ApiTags.Todos)
-            .WithDescription("Create new todo");
+            .WithDescription("Create new todo")
+            .Produces(StatusCodes.Status201Created, typeof(Response))
+            .Produces(StatusCodes.Status400BadRequest);
     }
     
     public static async Task<CreatedAtRoute<Response>> Handler(

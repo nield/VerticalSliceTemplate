@@ -8,7 +8,8 @@ public sealed class GetForecast : IEndpoint
     {
         app.MapGetRoute( ApiRoutes.Weather + "/forecast", Handler)
             .WithDescription("Get weather forecast")
-            .WithTags(ApiTags.Weather);
+            .WithTags(ApiTags.Weather)
+            .Produces(StatusCodes.Status200OK, typeof(IEnumerable<WeatherForecast>));
     }
 
     public static WeatherForecast[] Handler()

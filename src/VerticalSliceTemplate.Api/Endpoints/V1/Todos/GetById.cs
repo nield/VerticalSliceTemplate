@@ -9,7 +9,9 @@ public sealed class GetById : IEndpoint
         app.MapGetRoute(ApiRoutes.Todos + "/{id}", Handler)
             .WithTags(ApiTags.Todos)
             .WithDescription("Get a single ToDo")
-            .WithName("GetToDoById");
+            .WithName("GetToDoById")
+            .Produces(StatusCodes.Status200OK, typeof(Response))
+            .Produces(StatusCodes.Status404NotFound);
     }
     
     public static async Task<Response> Handler(

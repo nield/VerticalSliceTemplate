@@ -8,7 +8,8 @@ public sealed class GetAll : IEndpoint
     {
         app.MapGetRoute(ApiRoutes.Todos, Handler)
             .WithTags(ApiTags.Todos)
-            .WithDescription("Get all todos");
+            .WithDescription("Get all todos")
+            .Produces(StatusCodes.Status200OK, typeof(IEnumerable<Response>));
     }
 
     public static async Task<IEnumerable<Response>> Handler(

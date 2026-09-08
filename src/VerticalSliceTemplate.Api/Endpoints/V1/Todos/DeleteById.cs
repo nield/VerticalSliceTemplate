@@ -8,7 +8,9 @@ public sealed class DeleteById : IEndpoint
     {
         app.MapDeleteRoute(ApiRoutes.Todos + "/{id}", Handler)
             .WithTags(ApiTags.Todos)
-            .WithDescription("Used to delete a single todo");
+            .WithDescription("Used to delete a single todo")
+            .Produces(StatusCodes.Status204NoContent)
+            .Produces(StatusCodes.Status404NotFound);
     }
 
     public static async Task<NoContent> Handler(

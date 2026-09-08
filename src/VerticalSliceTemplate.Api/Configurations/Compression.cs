@@ -15,10 +15,10 @@ internal static class Compression
         });
 
         services.Configure<BrotliCompressionProviderOptions>(options
-            => options.Level = CompressionLevel.SmallestSize);
+            => options.Level = CompressionLevel.Optimal);
 
         services.Configure<GzipCompressionProviderOptions>(options
-            => options.Level = CompressionLevel.SmallestSize);
+            => options.Level = CompressionLevel.Optimal);
     }
 
     internal static void UseCompression(this WebApplication app)

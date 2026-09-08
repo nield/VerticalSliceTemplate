@@ -24,12 +24,12 @@ builder.AddProject<Projects.VerticalSliceTemplate_Api>("verticalslicetemplate-ap
         {
             url.DisplayLocation = UrlDisplayLocation.DetailsOnly;
         }
-
+    
         context.Urls.Add(new ResourceUrlAnnotation
         {
             DisplayText = "Scalar UI",
             Url = "/scalar",
-            Endpoint = context.GetEndpoint("http")
+            Endpoint = context.GetEndpoint("https")
         });
     });
 

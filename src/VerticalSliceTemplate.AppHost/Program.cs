@@ -29,7 +29,9 @@ builder.AddProject<Projects.VerticalSliceTemplate_Api>("verticalslicetemplate-ap
         {
             DisplayText = "Scalar UI",
             Url = "/scalar",
-            Endpoint = context.GetEndpoint("https")
+            Endpoint = context.GetEndpoint("https") is { Exists: true } https
+                ? https
+                : context.GetEndpoint("http")
         });
     });
 

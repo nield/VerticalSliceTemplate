@@ -26,6 +26,8 @@ internal static class ConfigureServices
 
         builder.Services.ConfigureHeaderPropagation();
 
+        builder.Services.SetupEndpointHandlers();
+        
         builder.SetupDatabase();
 
         builder.Services.AddProblemDetails(options => 

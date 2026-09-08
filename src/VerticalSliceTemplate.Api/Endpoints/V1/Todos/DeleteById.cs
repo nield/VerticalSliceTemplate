@@ -6,6 +6,7 @@ public sealed class DeleteById : IEndpoint
 {
     public static void AddRoute(IEndpointRouteBuilder app)
     {
+        // This endpoint/handler example should be used for simple endpoints with low or no business logic.
         app.MapDeleteRoute(ApiRoutes.Todos + "/{id}", Handler)
             .WithTags(ApiTags.Todos)
             .WithDescription("Used to delete a single todo")

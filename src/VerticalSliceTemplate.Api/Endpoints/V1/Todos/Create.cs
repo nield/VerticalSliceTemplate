@@ -6,30 +6,39 @@ public sealed class Create : IEndpoint
 {
     public static void AddRoute(IEndpointRouteBuilder app)
     {
-        app.MapPostRoute(ApiRoutes.Todos, Handler)
+        // This endpoint/handler example should be used for more complex endpoints with in depth business logic.
+        // This example is simple, but this shows how the framework is intended to be used. 
+        app.MapPostRoute(ApiRoutes.Todos,
+            async ([Validate] Request request, Handler handler, CancellationToken cancellationToken) =>
+            {
+                var response = await handler.Handle(request, cancellationToken);
+
+                return TypedResults.CreatedAtRoute<Response>(
+                    new Response { Id = response.Id }, "GetToDoById", new { id = response.Id });
+            })
             .WithTags(ApiTags.Todos)
             .WithDescription("Create new todo")
             .Produces(StatusCodes.Status201Created, typeof(Response))
             .Produces(StatusCodes.Status400BadRequest);
     }
-    
-    public static async Task<CreatedAtRoute<Response>> Handler(
-        [Validate]Request request, 
-        IToDoRepository toDoRepository, 
-        CancellationToken cancellationToken)
+
+    public sealed class Handler(IToDoRepository toDoRepository) : IEndpointHandler
     {
-        var newTodoItem = new ToDoItem
+        public async Task<Response> Handle(
+            Request request, CancellationToken cancellationToken)
         {
-            Title = request.Title,
-            Tags = request.Tags
-        };
+            var newTodoItem = new ToDoItem
+            {
+                Title = request.Title,
+                Tags = request.Tags
+            };
 
-        await toDoRepository.AddAsync(newTodoItem, cancellationToken);
+            await toDoRepository.AddAsync(newTodoItem, cancellationToken);
 
-        return TypedResults.CreatedAtRoute<Response>(
-            new Response { Id = newTodoItem.Id }, "GetToDoById", new { id = newTodoItem.Id });
+            return new Response { Id = newTodoItem.Id };
+        }
     }
-
+    
     public sealed class Request
     {
         public required string Title { get; set; }

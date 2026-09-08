@@ -7,12 +7,26 @@ public class EndpointTests : BaseTestFixture
     [Fact]
     public async Task Handle_Success()
     {
+        const int newId = 1;
+        
+        _toDoRepositoryMock.AddAsync(Arg.Any<ToDoItem>(), Arg.Any<CancellationToken>())
+            .Returns(callInfo =>
+            {
+                var entity = callInfo.Arg<ToDoItem>();
+                
+                entity.Id = newId;
+                
+                return entity;
+            });
+        
         var request = Builder<Create.Request>.CreateNew().Build();
 
-        var sut = await Create.Handler(request, _toDoRepositoryMock, CancellationToken.None);
+        var handler = new Create.Handler(_toDoRepositoryMock);
+        
+        var sut = await  handler.Handle(request, CancellationToken.None);
 
         sut.Should().NotBeNull();
 
-        sut.StatusCode.Should().Be(StatusCodes.Status201Created);
+        sut.Id.Should().Be(newId);
     }
 }

@@ -1,11 +1,13 @@
-﻿namespace VerticalSliceTemplate.Api.Endpoints.V1.Todos;
+﻿using static VerticalSliceTemplate.Api.Common.Constants;
+
+namespace VerticalSliceTemplate.Api.Endpoints.V1.Todos;
 
 public sealed class Update : IEndpoint
 {
     public static void AddRoute(IEndpointRouteBuilder app)
     {
-        app.MapPutRoute("/todos/{id}", Handler)
-            .WithTags(Constants.OpenApi.Tags.Todos)
+        app.MapPutRoute(ApiRoutes.Todos + "/{id}", Handler)
+            .WithTags(ApiTags.Todos)
             .WithDescription("Used to update a single todo");
     }
 

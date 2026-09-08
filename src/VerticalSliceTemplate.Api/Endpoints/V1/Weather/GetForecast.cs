@@ -6,9 +6,9 @@ public sealed class GetForecast : IEndpoint
 {
     public static void AddRoute(IEndpointRouteBuilder app)
     {
-        app.MapGetRoute("/weather/forecast", Handler)
+        app.MapGetRoute( ApiRoutes.Weather + "/forecast", Handler)
             .WithDescription("Get weather forecast")
-            .WithTags(OpenApi.Tags.Weather);
+            .WithTags(ApiTags.Weather);
     }
 
     public static WeatherForecast[] Handler()

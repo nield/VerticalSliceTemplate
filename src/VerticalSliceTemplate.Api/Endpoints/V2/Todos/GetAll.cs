@@ -1,11 +1,13 @@
-﻿namespace VerticalSliceTemplate.Api.Endpoints.V2.Todos;
+﻿using static VerticalSliceTemplate.Api.Common.Constants;
+
+namespace VerticalSliceTemplate.Api.Endpoints.V2.Todos;
 
 public sealed class GetAll : IEndpoint
 {
     public static void AddRoute(IEndpointRouteBuilder app)
     {
-        app.MapGetRoute("/todos", Handler, 2)
-            .WithTags(Constants.OpenApi.Tags.Todos)
+        app.MapGetRoute(ApiRoutes.Todos, Handler, 2)
+            .WithTags(ApiTags.Todos)
             .WithDescription("Used to get all todos");
     }
 

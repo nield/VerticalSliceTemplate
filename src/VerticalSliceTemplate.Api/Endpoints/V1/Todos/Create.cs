@@ -1,11 +1,13 @@
-﻿namespace VerticalSliceTemplate.Api.Endpoints.V1.Todos;
+﻿using static VerticalSliceTemplate.Api.Common.Constants;
+
+namespace VerticalSliceTemplate.Api.Endpoints.V1.Todos;
 
 public sealed class Create : IEndpoint
 {
     public static void AddRoute(IEndpointRouteBuilder app)
     {
-        app.MapPostRoute("/todos", Handler)
-            .WithTags(Constants.OpenApi.Tags.Todos)
+        app.MapPostRoute(ApiRoutes.Todos, Handler)
+            .WithTags(ApiTags.Todos)
             .WithDescription("Create new todo");
     }
     

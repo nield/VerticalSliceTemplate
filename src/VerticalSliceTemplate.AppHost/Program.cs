@@ -17,6 +17,20 @@ builder.AddProject<Projects.VerticalSliceTemplate_Api>("verticalslicetemplate-ap
     .WithReference(redis)
     .WaitFor(redis)
     .WaitFor(seq)
-    .WithEnvironment("SEQ_SERVER_URL", "http://localhost:8002");
+    .WithEnvironment("SEQ_SERVER_URL", "http://localhost:8002")
+    .WithUrls(context =>
+    {
+        foreach (var url in context.Urls)
+        {
+            url.DisplayLocation = UrlDisplayLocation.DetailsOnly;
+        }
+
+        context.Urls.Add(new ResourceUrlAnnotation
+        {
+            DisplayText = "Scalar UI",
+            Url = "/scalar",
+            Endpoint = context.GetEndpoint("http")
+        });
+    });
 
 await builder.Build().RunAsync();

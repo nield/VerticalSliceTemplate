@@ -2,14 +2,17 @@
 
 public static class Constants
 {
-    public static class OpenApi
+    public static class ApiTags
     {
-        public static class Tags
-        {
-            public const string Weather = "Weather";
-            public const string Todos = "ToDos";
-        }
+        public const string Weather = "Weather";
+        public const string Todos = "ToDos";
     }
+    
+    public static class ApiRoutes
+    {
+        public const string Weather = "/weather";
+        public const string Todos = "/todos";
+    } 
 
     public static class Headers
     {

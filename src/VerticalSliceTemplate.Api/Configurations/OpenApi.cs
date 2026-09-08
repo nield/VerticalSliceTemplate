@@ -11,12 +11,15 @@ internal static class OpenApi
 
         app.MapScalarApiReference(options =>
         {
+            options.DefaultOpenAllTags = true;
+            
+            options.SortTagsAlphabetically();
+            
             var descriptions = app.DescribeApiVersions();
 
-            for (var i = 0; i < descriptions.Count; i++)
+            foreach (var description in descriptions)
             {
-                var description = descriptions[i];
-                var isDefault = i == descriptions.Count - 1;
+                var isDefault = description.GroupName == "v1";
 
                 options.AddDocument(description.GroupName, description.GroupName, isDefault: isDefault);
             }

@@ -8,7 +8,6 @@
     <IsPackable>false</IsPackable>
     <RootNamespace>VerticalSliceTemplate.Api.Integration.Tests</RootNamespace>
     <AssemblyName>VerticalSliceTemplate.Api.Integration.Tests</AssemblyName>
-    <TestingPlatformShowTestsFailure>true</TestingPlatformShowTestsFailure>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,7 +24,6 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="xunit.v3" Version="4.0.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.9.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="4.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

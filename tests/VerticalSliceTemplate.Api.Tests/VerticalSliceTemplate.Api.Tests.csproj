@@ -8,7 +8,6 @@
     <IsPackable>false</IsPackable>
     <RootNamespace>VerticalSliceTemplate.Api.Tests</RootNamespace>
     <AssemblyName>VerticalSliceTemplate.Api.Tests</AssemblyName>
-    <TestingPlatformShowTestsFailure>true</TestingPlatformShowTestsFailure>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,7 +29,6 @@
     <PackageReference Include="MockQueryable.NSubstitute" Version="7.0.3" />
     <PackageReference Include="NSubstitute" Version="6.2.0" />
     <PackageReference Include="xunit.v3" Version="4.0.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.9.0" />
   </ItemGroup>
 
   <ItemGroup>

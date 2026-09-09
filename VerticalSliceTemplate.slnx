@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/VerticalSliceTemplate.Api/VerticalSliceTemplate.Api.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/VerticalSliceTemplate.Api.Integration.Tests/VerticalSliceTemplate.Api.Integration.Tests.csproj" />
+    <Project Path="tests/VerticalSliceTemplate.Api.Tests/VerticalSliceTemplate.Api.Tests.csproj" />
+  </Folder>
+  <Project Path="src/VerticalSliceTemplate.AppHost/VerticalSliceTemplate.AppHost.csproj" />
+  <Project Path="src/VerticalSliceTemplate.ServiceDefaults/VerticalSliceTemplate.ServiceDefaults.csproj" />
+</Solution>

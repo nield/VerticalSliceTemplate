@@ -13,10 +13,10 @@ public sealed class DeleteById : IEndpoint
             .Produces(StatusCodes.Status404NotFound);
     }
 
-    /// <summary>
-    /// This static handler example should be used for simple endpoints with low or no business logic.
-    /// Benefit of this approach is less code setup compared to <see cref="Create"/>.
-    /// </summary>
+    /*
+    This static handler example should be used for simple endpoints with low or no business logic.
+    Benefit of this approach is less code setup compared to <see cref="Create"/>.
+    */
     public static async Task<NoContent> Handler(
         [Required]long id, 
         IToDoRepository toDoRepository,

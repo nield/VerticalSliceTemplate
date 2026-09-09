@@ -13,7 +13,7 @@ public class ValidatorTests
         var sut = await _validator.TestValidateAsync(new Update.Request
         {
             Title = ""
-        });
+        }, cancellationToken: TestContext.Current.CancellationToken);
 
         sut.ShouldHaveValidationErrorFor(x => x.Title);
     }

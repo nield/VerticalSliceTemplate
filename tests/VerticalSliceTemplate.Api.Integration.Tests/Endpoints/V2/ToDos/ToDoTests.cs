@@ -17,7 +17,8 @@ public class ToDoTests
     public async Task GetAll_Should_ReturnData()
     {
         var sut = await _webApplicationFixture.HttpClient.GetFromJsonAsync<IEnumerable<GetAll.Response>>(
-            "/api/v2/todos");
+            "/api/v2/todos",
+            cancellationToken: TestContext.Current.CancellationToken);
 
         Assert.NotNull(sut);
         Assert.NotEmpty(sut);

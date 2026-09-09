@@ -19,7 +19,8 @@ public class ToDoTests
     public async Task GetAll_Should_ReturnData()
     {
         var sut = await _webApplicationFixture.HttpClient.GetFromJsonAsync<IEnumerable<GetAll.Response>>(
-            "/api/v1/todos");
+            "/api/v1/todos", 
+            cancellationToken: TestContext.Current.CancellationToken);
 
         Assert.NotNull(sut);
         Assert.NotEmpty(sut);
@@ -30,7 +31,9 @@ public class ToDoTests
     {
         var payload = Builder<Create.Request>.CreateNew().Build();
 
-        var sut = await _webApplicationFixture.HttpClient.PostAsJsonAsync("/api/v1/todos", payload);
+        var sut = await _webApplicationFixture.HttpClient.PostAsJsonAsync(
+            "/api/v1/todos", payload, 
+            cancellationToken: TestContext.Current.CancellationToken);
 
         Assert.NotNull(sut);
         Assert.Equal(HttpStatusCode.Created, sut.StatusCode);
@@ -62,8 +65,9 @@ public class ToDoTests
         var payload = Builder<Update.Request>.CreateNew().Build();
 
         var sut = await _webApplicationFixture.HttpClient.PutAsJsonAsync(
-            $"/api/v1/todos/{id}",
-            payload);
+            $"/api/v1/todos/{id}", 
+            payload, 
+            cancellationToken: TestContext.Current.CancellationToken);
 
         Assert.NotNull(sut);
         Assert.Equal(HttpStatusCode.NotFound, sut.StatusCode);
@@ -80,7 +84,8 @@ public class ToDoTests
 
         var sut = await _webApplicationFixture.HttpClient.PutAsJsonAsync(
             $"/api/v1/todos/{id}",
-            payload);
+            payload,
+            cancellationToken: TestContext.Current.CancellationToken);
 
         Assert.NotNull(sut);
         Assert.Equal(HttpStatusCode.NoContent, sut.StatusCode);
@@ -98,7 +103,8 @@ public class ToDoTests
         var id = 99999L;
 
         var sut = await _webApplicationFixture.HttpClient.DeleteAsync(
-            $"/api/v1/todos/{id}");
+            $"/api/v1/todos/{id}",
+            cancellationToken: TestContext.Current.CancellationToken);
 
         Assert.NotNull(sut);
         Assert.Equal(HttpStatusCode.NotFound, sut.StatusCode);
@@ -110,7 +116,8 @@ public class ToDoTests
         var id = 1L;
 
         var sut = await _webApplicationFixture.HttpClient.DeleteAsync(
-            $"/api/v1/todos/{id}");
+            $"/api/v1/todos/{id}",
+            cancellationToken: TestContext.Current.CancellationToken);
 
         Assert.NotNull(sut);
         Assert.Equal(HttpStatusCode.NoContent, sut.StatusCode);
@@ -123,7 +130,8 @@ public class ToDoTests
     private async Task<GetById.Response?> GetToDoById(long id, bool shouldExists)
     {
         var sut = await _webApplicationFixture.HttpClient.GetAsync(
-            $"/api/v1/todos/{id}");
+            $"/api/v1/todos/{id}",
+            cancellationToken: TestContext.Current.CancellationToken);
 
         Assert.NotNull(sut);
 

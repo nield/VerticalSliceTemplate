@@ -20,11 +20,11 @@ public sealed class Create : IEndpoint
             .Produces(StatusCodes.Status400BadRequest);
     }
     
-    /// <summary>
-    /// This handler example should be used for more complex endpoints with in-depth business logic.
-    /// This example is simple, but this shows how the framework is intended to be used when complex logic is involved.
-    /// Benefit of this approach is individual methods in class can be unit tested. 
-    /// </summary>
+    /*
+    This handler example should be used for more complex endpoints with in-depth business logic.
+    This example is simple, but this shows how the framework is intended to be used when complex logic is involved.
+     Benefit of this approach is individual methods in class can be unit tested. 
+    */
     public sealed class Handler(IToDoRepository toDoRepository) : IEndpointHandler
     {
         public async Task<Response> Handle(

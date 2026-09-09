@@ -30,7 +30,7 @@ public class WebApplicationFixture : IAsyncLifetime
         }
     }
 
-    public async Task InitializeAsync()
+    public async ValueTask InitializeAsync()
     {
         await StartContainers();
 
@@ -80,10 +80,14 @@ public class WebApplicationFixture : IAsyncLifetime
         await dbContextInitialiser.SeedDataAsync();
     }
 
-    public Task DisposeAsync()
+    public async ValueTask DisposeAsync()
     {
-        _httpClient?.Dispose();
+        if (_databaseConnection is not null)
+        {
+            // dispose also closes the connection
+            await _databaseConnection.DisposeAsync();
+        }
 
-        return Task.CompletedTask;
+        _httpClient?.Dispose();
     }
 }

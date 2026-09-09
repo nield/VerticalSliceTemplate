@@ -6,7 +6,6 @@ public sealed class DeleteById : IEndpoint
 {
     public static void AddRoute(IEndpointRouteBuilder app)
     {
-        // This endpoint/handler example should be used for simple endpoints with low or no business logic.
         app.MapDeleteRoute(ApiRoutes.Todos + "/{id}", Handler)
             .WithTags(ApiTags.Todos)
             .WithDescription("Used to delete a single todo")
@@ -14,6 +13,10 @@ public sealed class DeleteById : IEndpoint
             .Produces(StatusCodes.Status404NotFound);
     }
 
+    /// <summary>
+    /// This static handler example should be used for simple endpoints with low or no business logic.
+    /// Benefit of this approach is less code setup compared to <see cref="Create"/>.
+    /// </summary>
     public static async Task<NoContent> Handler(
         [Required]long id, 
         IToDoRepository toDoRepository,

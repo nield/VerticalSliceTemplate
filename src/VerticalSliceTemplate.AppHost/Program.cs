@@ -11,7 +11,7 @@ var database = builder.AddSqlServer("Sql", sqlPassword, 8003)
     .WithLifetime(ContainerLifetime.Persistent)
     .AddDatabase("SqlDatabase", "templateDb");
 
-builder.AddProject<Projects.VerticalSliceTemplate_Api>("verticalslicetemplate-api")
+builder.AddDotnetProject("verticalslicetemplate-api", "../VerticalSliceTemplate.Api/VerticalSliceTemplate.Api.csproj")
     .WithReference(database)
     .WaitFor(database)
     .WithReference(redis)

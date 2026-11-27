@@ -1,26 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Sdk Name="Aspire.AppHost.Sdk" Version="13.5.3" />
-
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net10.0</TargetFramework>
+    <TargetFramework>net11.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <IsAspireHost>true</IsAspireHost>
     <UserSecretsId>f1a06817-bb0f-4dc8-844b-0a9d5dc3b518</UserSecretsId>
-    <AspireUseCliBundle>true</AspireUseCliBundle>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aspire.Hosting.AppHost" Version="13.5.3" />
-    <PackageReference Include="Aspire.Hosting.Redis" Version="13.5.3" />
-    <PackageReference Include="Aspire.Hosting.Seq" Version="9.2.0" />
-    <PackageReference Include="Aspire.Hosting.SqlServer" Version="13.5.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\VerticalSliceTemplate.Api\VerticalSliceTemplate.Api.csproj" />
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="17.0.0" />
+    <PackageReference Include="Aspire.Hosting.Dotnet" Version="17.0.0" />
+    <PackageReference Include="Aspire.Hosting.Redis" Version="17.0.0" />
+    <PackageReference Include="Aspire.Hosting.Seq" Version="17.0.0" />
+    <PackageReference Include="Aspire.Hosting.SqlServer" Version="17.0.0" />
   </ItemGroup>
 
 </Project>

@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <PackageReference Include="Aspire.Hosting.AppHost" Version="17.0.0" />
+    <PackageReference Include="Aspire.Hosting.Dotnet" Version="17.0.0" />
     <PackageReference Include="Aspire.Hosting.Redis" Version="17.0.0" />
     <PackageReference Include="Aspire.Hosting.Seq" Version="17.0.0" />
     <PackageReference Include="Aspire.Hosting.SqlServer" Version="17.0.0" />

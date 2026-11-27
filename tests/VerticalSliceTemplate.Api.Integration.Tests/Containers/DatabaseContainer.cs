@@ -19,7 +19,6 @@ internal sealed class DatabaseContainer : BaseContainer<DatabaseContainer>
             .WithEnvironment("ACCEPT_EULA", "Y")
             .WithEnvironment("MSSQL_SA_PASSWORD", DatabasePassword)
             .WithWaitStrategy(Wait.ForUnixContainer().UntilInternalTcpPortIsAvailable(DatabaseDefaultPort))
-            .WithReuse(true)
             .Build();
     }
 

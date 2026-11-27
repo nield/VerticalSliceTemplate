@@ -8,7 +8,7 @@ public class EndpointTests : BaseTestFixture
     public async Task Given_Data_Exists_Should_ReturnData()
     {
         var items = Builder<ToDoItem>.CreateListOfSize(1)
-            .Build().AsQueryable().BuildMockDbSet();
+            .Build().ToList().BuildMockDbSet();
 
         ApplicationDbContextMock.TodoItems
             .Returns(items);
